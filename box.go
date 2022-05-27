@@ -90,18 +90,21 @@ func (b *box) SumArea() float64 {
 // RemoveAllCircles removes all circles in the list
 // whether circles are not exist in the list, then returns an error
 func (b *box) RemoveAllCircles() error {
-
-	var isFind bool
-	for i, v := range b.shapes {
+	var shapes []Shape
+	var circles []Shape
+	for _, v := range b.shapes {
+		fmt.Println("v:", v)
 		if _, ok := v.(*Circle); ok {
-			b.ExtractByIndex(i)
-			isFind = true
+			circles = append(circles, v)
+		} else {
+			shapes = append(shapes, v)
 		}
 	}
 
-	if !isFind {
+	if len(circles) == 0 {
 		return fmt.Errorf("circles not found")
 	}
 
+	b.shapes = shapes
 	return nil
 }

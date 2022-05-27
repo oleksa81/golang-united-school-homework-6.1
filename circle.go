@@ -9,10 +9,10 @@ type Circle struct {
 
 // CalcPerimeter returns calculation result of perimeter
 func (c *Circle) CalcPerimeter() float64 {
-	return math.Pi * c.Radius * c.Radius
+	return 2 * math.Pi * c.Radius
 }
 
 // CalcArea returns calculation result of area
 func (c *Circle) CalcArea() float64 {
-	return 2 * math.Pi * c.Radius
+	return math.Pi * c.Radius * c.Radius
 }
